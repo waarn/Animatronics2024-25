@@ -1,3 +1,8 @@
+#include <SoftwareSerial.h>
+
+SoftwareSerial mySerial(52, 50);  // RX, TX
+String readString;
+
 int Motor1_EN = 13;
 int Motor1_in1 = 12;
 int Motor1_in2 = 11;
@@ -16,6 +21,13 @@ int Sound7 = 47;
 int Sound8 = 49;
 int Sound9 = 51;
 
+int Video1 = 6;
+int Video2 = 5;
+int Video3 = 16;
+int Video4 = 15;
+
+int Relay1 = A0;
+int Relay2 = A4;
 
 void setup() {
   pinMode(Motor1_EN, OUTPUT);
@@ -36,12 +48,21 @@ void setup() {
   pinMode(Sound8, OUTPUT);
   pinMode(Sound9, OUTPUT);
 
+  pinMode(Video1, OUTPUT);
+  pinMode(Video2, OUTPUT);
+  pinMode(Video3, OUTPUT);
+  pinMode(Video4, OUTPUT);
+
+  pinMode(Relay1, OUTPUT);
+  pinMode(Relay2, OUTPUT);
 
   digitalWrite(Motor1_in1, LOW);
   digitalWrite(Motor1_in2, HIGH);
 
   digitalWrite(Motor2_in1, LOW);
   digitalWrite(Motor2_in2, HIGH);
+  analogWrite(Motor1_EN, 200);
+  analogWrite(Motor2_EN, 100);
 
   digitalWrite(Sound1, LOW);
   digitalWrite(Sound2, HIGH);
@@ -52,17 +73,43 @@ void setup() {
   digitalWrite(Sound7, HIGH);
   digitalWrite(Sound8, HIGH);
   digitalWrite(Sound9, HIGH);
+
+  digitalWrite(Video1, HIGH);
+  digitalWrite(Video2, HIGH);
+  digitalWrite(Video3, HIGH);
+  digitalWrite(Video4, HIGH);
+
+  digitalWrite(Relay1, HIGH);
+  digitalWrite(Relay2, HIGH);
+
+  mySerial.begin(9600);
 }
 
 void loop() {
+  while (mySerial.available()) {
+    delay(1);
+    char c = mySerial.read();
+    readString += c;
+  }
 
-  analogWrite(Motor1_EN, 200);  // Send PWM signal to L298N Enable pin
-  analogWrite(Motor2_EN, 100);  // Send PWM signal to L298N Enable pin
+  if (readString.length() > 0) {
+    Serial.println(readString);
 
-  delay(5000);
+    if (readString == "9781419739033") {
+      digitalWrite(Relay1, LOW);
+      digitalWrite(Relay2, HIGH);
+    }
+    if (readString == "9780142410318") {
+      digitalWrite(Relay1, HIGH);
+      digitalWrite(Relay2, LOW);
+    }
+    if (readString == "051111407592") {
+      digitalWrite(Video1, LOW);
+      delay(500);
+      digitalWrite(Video1, HIGH);
+    }
 
- // analogWrite(Motor1_EN, 150);  // Send PWM signal to L298N Enable pin
-  //analogWrite(Motor2_EN, 150);  // Send PWM signal to L298N Enable pin
 
-  delay(5000);
+    readString = "";
+  }
 }
