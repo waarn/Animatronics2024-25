@@ -28,6 +28,12 @@ int ServoPin3 = 19;
 int ServoPin4 = 20;
 int ServoPin5 = 21;
 
+int Servo1Mod = 0;
+int Servo2Mod = 13;
+int Servo3Mod = -1;
+int Servo4Mod = 2;
+int Servo5Mod = 0;
+
 Servo Servo1;
 Servo Servo2;
 Servo Servo3;
@@ -41,6 +47,8 @@ int Video4 = 15;
 
 int Relay1 = A0;
 int Relay2 = A4;
+
+int pos = 0;
 
 void setup() {
   pinMode(Motor1_EN, OUTPUT);
@@ -93,6 +101,12 @@ void setup() {
   Servo4.attach(ServoPin4);
   Servo5.attach(ServoPin5);
 
+  Servo1.write(90 + Servo1Mod);
+  Servo2.write(90 + Servo2Mod);
+  Servo3.write(90 + Servo3Mod);
+  Servo4.write(90 + Servo4Mod);
+  Servo5.write(90 + Servo5Mod);
+
   digitalWrite(Video1, HIGH);
   digitalWrite(Video2, HIGH);
   digitalWrite(Video3, HIGH);
@@ -102,6 +116,7 @@ void setup() {
   digitalWrite(Relay2, HIGH);
 
   mySerial.begin(9600);
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -114,27 +129,172 @@ void loop() {
   if (readString.length() > 0) {
     Serial.println(readString);
 
-    if (readString == "9781419739033") {
-      digitalWrite(Relay1, LOW);
-      digitalWrite(Relay2, HIGH);
+    if (readString == "051111407111") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
     }
-    if (readString == "9780142410318") {
-      digitalWrite(Relay1, HIGH);
-      digitalWrite(Relay2, LOW);
+    if (readString == "051111407596") {
+      digitalWrite(Sound1, LOW);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
     }
-    if (readString == "051111407592") {
+    if (readString == "051111407595") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, LOW);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+    if (readString == "051111407594") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, LOW);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+    if (readString == "051111407113") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, LOW);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+    if (readString == "051111407114") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, LOW);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+    if (readString == "051111407115") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, LOW);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+    if (readString == "051111407116") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, LOW);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+    if (readString == "051111407117") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, LOW);
+      digitalWrite(Sound9, HIGH);
+    }
+    if (readString == "051111407593") {
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, LOW);
+    }
+    if (readString == "051111407108") {
       digitalWrite(Video1, LOW);
       delay(500);
       digitalWrite(Video1, HIGH);
+      delay(200);
+    }
+    if (readString == "051111407109") {
+      digitalWrite(Video2, LOW);
+      delay(500);
+      digitalWrite(Video2, HIGH);
+      delay(200);
+    }
+    if (readString == "051111407112") {
+      digitalWrite(Video3, LOW);
+      delay(500);
+      digitalWrite(Video3, HIGH);
+      delay(200);
+    }
+    if (readString == "051111407103") {
+      digitalWrite(Relay1, HIGH);
+    }
+    if (readString == "051111407102") {
+      digitalWrite(Relay1, LOW);
+    }
+    if (readString == "051111407101") {
+      digitalWrite(Relay2, HIGH;
+    }
+    if (readString == "051111407104") {
+      digitalWrite(Relay3, LOW);
+    }
+    if (readString == "051111407105") {
+      for (int i = 0; i <= 35; i++) {
+        Servo1.write(80 + Servo1Mod);
+        Servo2.write(80 + Servo2Mod);
+        Servo3.write(80 + Servo3Mod);
+        Servo4.write(80 + Servo4Mod);
+        Servo5.write(80 + Servo5Mod);
+        delay(500);
+        Servo1.write(100 + Servo1Mod);
+        Servo2.write(100 + Servo2Mod);
+        Servo3.write(100 + Servo3Mod);
+        Servo4.write(100 + Servo4Mod);
+        Servo5.write(100 + Servo5Mod);
+      }
     }
 
 
     readString = "";
   }
+  /*
   Servo1.write(map(analogRead(A1), 0, 1023, 0, 180));
   Servo2.write(map(analogRead(A1), 0, 1023, 0, 180));
   Servo3.write(map(analogRead(A1), 0, 1023, 0, 180));
   Servo4.write(map(analogRead(A1), 0, 1023, 0, 180));
   Servo5.write(map(analogRead(A1), 0, 1023, 0, 180));
+  Serial.println(map(analogRead(A1), 0, 1023, 0, 180));
   delay(15);
+  */
 }
