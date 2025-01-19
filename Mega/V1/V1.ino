@@ -1,4 +1,5 @@
 #include <SoftwareSerial.h>
+#include <Servo.h>
 
 SoftwareSerial mySerial(52, 50);  // RX, TX
 String readString;
@@ -20,6 +21,18 @@ int Sound6 = 45;
 int Sound7 = 47;
 int Sound8 = 49;
 int Sound9 = 51;
+
+int ServoPin1 = 28;
+int ServoPin2 = 18;
+int ServoPin3 = 19;
+int ServoPin4 = 20;
+int ServoPin5 = 21;
+
+Servo Servo1;
+Servo Servo2;
+Servo Servo3;
+Servo Servo4;
+Servo Servo5;
 
 int Video1 = 6;
 int Video2 = 5;
@@ -74,6 +87,12 @@ void setup() {
   digitalWrite(Sound8, HIGH);
   digitalWrite(Sound9, HIGH);
 
+  Servo1.attach(ServoPin1);
+  Servo2.attach(ServoPin2);
+  Servo3.attach(ServoPin3);
+  Servo4.attach(ServoPin4);
+  Servo5.attach(ServoPin5);
+
   digitalWrite(Video1, HIGH);
   digitalWrite(Video2, HIGH);
   digitalWrite(Video3, HIGH);
@@ -112,4 +131,10 @@ void loop() {
 
     readString = "";
   }
+  Servo1.write(map(analogRead(A1), 0, 1023, 0, 180));
+  Servo2.write(map(analogRead(A1), 0, 1023, 0, 180));
+  Servo3.write(map(analogRead(A1), 0, 1023, 0, 180));
+  Servo4.write(map(analogRead(A1), 0, 1023, 0, 180));
+  Servo5.write(map(analogRead(A1), 0, 1023, 0, 180));
+  delay(15);
 }
