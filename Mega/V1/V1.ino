@@ -129,6 +129,74 @@ void loop() {
   if (readString.length() > 0) {
     Serial.println(readString);
 
+    if (readString == "9780060256654") {
+      digitalWrite(Video1, LOW);
+      delay(500);
+      digitalWrite(Video1, HIGH);
+      delay(200);
+
+      digitalWrite(Relay1, LOW);
+
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, LOW);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+      for (int i = 0; i <= 9; i++) {
+        for (pos = 100; pos >= 70; pos -= 1) {
+          Servo1.write(map(pos, 70, 100, 80, 100) + Servo1Mod);
+          delay(15);
+          Servo2.write(pos + Servo2Mod);
+          delay(15);
+          Servo3.write(pos + Servo3Mod);
+          delay(15);
+          Servo4.write(pos + Servo4Mod);
+          delay(15);
+          Servo5.write(pos + Servo5Mod);
+          delay(15);
+        }
+        digitalWrite(Relay2, LOW);
+        for (pos = 70; pos <= 100; pos += 1) {
+          Servo1.write(map(pos, 70, 100, 80, 100) + Servo1Mod);
+          delay(15);
+          Servo2.write(pos + Servo2Mod);
+          delay(15);
+          Servo3.write(pos + Servo3Mod);
+          delay(15);
+          Servo4.write(pos + Servo4Mod);
+          delay(15);
+          Servo5.write(pos + Servo5Mod);
+          delay(15);
+        }
+        digitalWrite(Relay2, HIGH);
+      }
+          delay(2750);
+    
+      Servo1.write(90 + Servo1Mod);
+      Servo2.write(90 + Servo2Mod);
+      Servo3.write(90 + Servo3Mod);
+      Servo4.write(90 + Servo4Mod);
+      Servo5.write(90 + Servo5Mod);
+
+      digitalWrite(Relay1, HIGH);
+      digitalWrite(Relay2, HIGH);
+
+      digitalWrite(Sound1, LOW);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+
+
     if (readString == "051111407111") {
       digitalWrite(Sound1, HIGH);
       digitalWrite(Sound2, HIGH);
@@ -264,10 +332,10 @@ void loop() {
       digitalWrite(Relay1, LOW);
     }
     if (readString == "051111407101") {
-      digitalWrite(Relay2, HIGH;
+      digitalWrite(Relay2, HIGH);
     }
     if (readString == "051111407104") {
-      digitalWrite(Relay3, LOW);
+      digitalWrite(Relay2, LOW);
     }
     if (readString == "051111407105") {
       for (int i = 0; i <= 35; i++) {
@@ -284,17 +352,6 @@ void loop() {
         Servo5.write(100 + Servo5Mod);
       }
     }
-
-
     readString = "";
   }
-  /*
-  Servo1.write(map(analogRead(A1), 0, 1023, 0, 180));
-  Servo2.write(map(analogRead(A1), 0, 1023, 0, 180));
-  Servo3.write(map(analogRead(A1), 0, 1023, 0, 180));
-  Servo4.write(map(analogRead(A1), 0, 1023, 0, 180));
-  Servo5.write(map(analogRead(A1), 0, 1023, 0, 180));
-  Serial.println(map(analogRead(A1), 0, 1023, 0, 180));
-  delay(15);
-  */
 }
