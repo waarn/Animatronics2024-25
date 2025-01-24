@@ -196,6 +196,139 @@ void loop() {
       digitalWrite(Sound9, HIGH);
     }
 
+    if (readString == "9780394800165") {
+      digitalWrite(Video2, LOW);
+      delay(500);
+      digitalWrite(Video2, HIGH);
+      delay(200);
+
+      digitalWrite(Relay1, LOW);
+
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, LOW);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+      for (int i = 0; i <= 9; i++) {
+        for (pos = 100; pos >= 70; pos -= 1) {
+          Servo1.write(map(pos, 70, 100, 80, 100) + Servo1Mod);
+          delay(15);
+          Servo2.write(pos + Servo2Mod);
+          delay(15);
+          Servo3.write(pos + Servo3Mod);
+          delay(15);
+          Servo4.write(pos + Servo4Mod);
+          delay(15);
+          Servo5.write(pos + Servo5Mod);
+          delay(15);
+        }
+        digitalWrite(Relay2, LOW);
+        for (pos = 70; pos <= 100; pos += 1) {
+          Servo1.write(map(pos, 70, 100, 80, 100) + Servo1Mod);
+          delay(15);
+          Servo2.write(pos + Servo2Mod);
+          delay(15);
+          Servo3.write(pos + Servo3Mod);
+          delay(15);
+          Servo4.write(pos + Servo4Mod);
+          delay(15);
+          Servo5.write(pos + Servo5Mod);
+          delay(15);
+        }
+        digitalWrite(Relay2, HIGH);
+      }
+          delay(2750);
+    
+      Servo1.write(90 + Servo1Mod);
+      Servo2.write(90 + Servo2Mod);
+      Servo3.write(90 + Servo3Mod);
+      Servo4.write(90 + Servo4Mod);
+      Servo5.write(90 + Servo5Mod);
+
+      digitalWrite(Relay1, HIGH);
+      digitalWrite(Relay2, HIGH);
+
+      digitalWrite(Sound1, LOW);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+    if (readString == "9780394800134") {
+      digitalWrite(Video3, LOW);
+      delay(500);
+      digitalWrite(Video3, HIGH);
+      delay(200);
+
+      digitalWrite(Relay1, LOW);
+
+      digitalWrite(Sound1, HIGH);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, LOW);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+      for (int i = 0; i <= 9; i++) {
+        for (pos = 100; pos >= 70; pos -= 1) {
+          Servo1.write(map(pos, 70, 100, 80, 100) + Servo1Mod);
+          delay(15);
+          Servo2.write(pos + Servo2Mod);
+          delay(15);
+          Servo3.write(pos + Servo3Mod);
+          delay(15);
+          Servo4.write(pos + Servo4Mod);
+          delay(15);
+          Servo5.write(pos + Servo5Mod);
+          delay(15);
+        }
+        digitalWrite(Relay2, LOW);
+        for (pos = 70; pos <= 100; pos += 1) {
+          Servo1.write(map(pos, 70, 100, 80, 100) + Servo1Mod);
+          delay(15);
+          Servo2.write(pos + Servo2Mod);
+          delay(15);
+          Servo3.write(pos + Servo3Mod);
+          delay(15);
+          Servo4.write(pos + Servo4Mod);
+          delay(15);
+          Servo5.write(pos + Servo5Mod);
+          delay(15);
+        }
+        digitalWrite(Relay2, HIGH);
+      }
+          delay(2750);
+    
+      Servo1.write(90 + Servo1Mod);
+      Servo2.write(90 + Servo2Mod);
+      Servo3.write(90 + Servo3Mod);
+      Servo4.write(90 + Servo4Mod);
+      Servo5.write(90 + Servo5Mod);
+
+      digitalWrite(Relay1, HIGH);
+      digitalWrite(Relay2, HIGH);
+
+      digitalWrite(Sound1, LOW);
+      digitalWrite(Sound2, HIGH);
+      digitalWrite(Sound3, HIGH);
+      digitalWrite(Sound4, HIGH);
+      digitalWrite(Sound5, HIGH);
+      digitalWrite(Sound6, HIGH);
+      digitalWrite(Sound7, HIGH);
+      digitalWrite(Sound8, HIGH);
+      digitalWrite(Sound9, HIGH);
+    }
+
 
     if (readString == "051111407111") {
       digitalWrite(Sound1, HIGH);
